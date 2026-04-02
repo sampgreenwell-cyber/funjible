@@ -2,6 +2,9 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Install build dependencies for native modules like bcrypt
+RUN apk add --no-cache python3 make g++
+
 COPY package*.json ./
 COPY tsconfig.json ./
 
@@ -15,9 +18,12 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install build dependencies for production dependencies
+RUN apk add --no-cache python3 make g++
+
 COPY package*.json ./
 
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 COPY --from=builder /app/dist ./dist
 
