@@ -4,7 +4,7 @@ import { logger } from '../utils/logger';
 import { v4 as uuidv4 } from 'uuid';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-11-20.acacia'
+  apiVersion: '2023-10-16',
 });
 
 interface PaymentDetails {
@@ -179,7 +179,7 @@ export class PaymentService {
 
   private static async tokenizeCard(paymentDetails: PaymentDetails): Promise<string> {
     try {
-      const token = await stripe.tokens.create({
+      const token = await (stripe.tokens.create as any)({
         card: {
           number: paymentDetails.cardNumber,
           exp_month: paymentDetails.expiryMonth,

@@ -25,14 +25,14 @@ export class AuthService {
     const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret';
     const expiresIn = process.env.JWT_EXPIRES_IN || '7d';
 
-    return jwt.sign({ userId }, jwtSecret, { expiresIn });
+    return jwt.sign({ userId }, jwtSecret, { expiresIn } as any);
   }
 
   private static generateRefreshToken(userId: string): string {
     const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret';
     const expiresIn = process.env.JWT_REFRESH_EXPIRES_IN || '30d';
 
-    return jwt.sign({ userId, type: 'refresh' }, jwtSecret, { expiresIn });
+    return jwt.sign({ userId, type: 'refresh' }, jwtSecret, { expiresIn } as any);
   }
 
   static async register(data: RegisterData): Promise<AuthResult> {
