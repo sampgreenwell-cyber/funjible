@@ -1,152 +1,113 @@
-import { useState } from 'react'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import AuthPage from './pages/AuthPage';
+import DashboardPage from './pages/DashboardPage';
+import WalletPage from './pages/WalletPage';
+import ArticlesPage from './pages/ArticlesPage';
+import PublishersPage from './pages/PublishersPage';
+import ProfilePage from './components/profile/ProfilePage';
+import ReadingHistory from './components/profile/ReadingHistory';
+import SpendingAnalytics from './components/profile/SpendingAnalytics';
+import Layout from './components/layout/Layout';
+import './App.css';
 
-function App() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [isLogin, setIsLogin] = useState(true)
-  const [user, setUser] = useState(null)
-  const [message, setMessage] = useState('')
+// Protected Route Component
+function ProtectedRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
 
-  const API_URL = 'http://localhost:3000/api'
-
-  const handleAuth = async (e) => {
-    e.preventDefault()
-    setMessage('')
-
-    try {
-      const endpoint = isLogin ? '/auth/login' : '/auth/register'
-      const body = isLogin 
-        ? { email, password }
-        : { email, password, firstName, lastName }
-
-      const response = await fetch(`${API_URL}${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      })
-
-      const data = await response.json()
-
-      if (data.success) {
-        localStorage.setItem('token', data.data.token)
-        setUser(data.data.user)
-        setMessage(`Welcome, ${data.data.user.firstName}!`)
-      } else {
-        setMessage(data.error || 'Authentication failed')
-      }
-    } catch (error) {
-      setMessage('Error connecting to server')
-      console.error(error)
-    }
+  if (loading) {
+    return <div className="loading">Loading...</div>;
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem('token')
-    setUser(null)
-    setEmail('')
-    setPassword('')
-    setFirstName('')
-    setLastName('')
-    setMessage('Logged out successfully')
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
   }
 
-  if (user) {
-    return (
-      <div className="App">
-        <div className="card">
-          <h1>🎉 Welcome to NewsAccess!</h1>
-          <div className="user-info">
-            <h2>Hello, {user.firstName} {user.lastName}</h2>
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>User ID:</strong> {user.id}</p>
-          </div>
-          <div className="features">
-            <h3>Available Features:</h3>
-            <ul>
-              <li>✅ User Authentication</li>
-              <li>✅ Digital Wallet (Coming Soon)</li>
-              <li>✅ Article Purchases (Coming Soon)</li>
-              <li>✅ Publisher Subscriptions (Coming Soon)</li>
-            </ul>
-          </div>
-          <button onClick={handleLogout} className="logout-btn">
-            Logout
-          </button>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="App">
-      <div className="card">
-        <h1>📰 NewsAccess</h1>
-        <p className="tagline">Pay only for the articles you read</p>
-        
-        <div className="auth-toggle">
-          <button 
-            className={isLogin ? 'active' : ''} 
-            onClick={() => setIsLogin(true)}
-          >
-            Login
-          </button>
-          <button 
-            className={!isLogin ? 'active' : ''} 
-            onClick={() => setIsLogin(false)}
-          >
-            Register
-          </button>
-        </div>
-
-        <form onSubmit={handleAuth}>
-          {!isLogin && (
-            <>
-              <input
-                type="text"
-                placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                required
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                required
-              />
-            </>
-          )}
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit" className="submit-btn">
-            {isLogin ? 'Login' : 'Create Account'}
-          </button>
-        </form>
-
-        {message && (
-          <p className={`message ${user ? 'success' : 'error'}`}>
-            {message}
-          </p>
-        )}
-      </div>
-    </div>
-  )
+  return <Layout>{children}</Layout>;
 }
 
-export default App
+// Public Route Component (redirect if already logged in)
+function PublicRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={
+        <PublicRoute>
+          <AuthPage />
+        </PublicRoute>
+      } />
+
+      {/* Protected Routes */}
+      <Route path="/dashboard" element={
+        <ProtectedRoute>
+          <DashboardPage />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/wallet" element={
+        <ProtectedRoute>
+          <WalletPage />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/articles" element={
+        <ProtectedRoute>
+          <ArticlesPage />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/publishers" element={
+        <ProtectedRoute>
+          <PublishersPage />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/profile" element={
+        <ProtectedRoute>
+          <ProfilePage />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/history" element={
+        <ProtectedRoute>
+          <ReadingHistory />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/analytics" element={
+        <ProtectedRoute>
+          <SpendingAnalytics />
+        </ProtectedRoute>
+      } />
+
+      {/* Catch all - redirect to dashboard or home */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </Router>
+  );
+}
+
+export default App;

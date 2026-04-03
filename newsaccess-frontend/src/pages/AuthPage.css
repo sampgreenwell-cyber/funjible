@@ -1,0 +1,62 @@
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.auth-header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.auth-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.auth-tabs button.active {
+  background: white;
+  color: #667eea;
+  border-color: white;
+}
+
+.auth-tabs button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.auth-tabs button.active:hover {
+  background: white;
+}

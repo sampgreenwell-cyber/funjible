@@ -1,0 +1,128 @@
+.publisher-list-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.publishers-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.publishers-header h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.publishers-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.publishers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.publisher-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.publisher-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.publisher-logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.publisher-logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.publisher-info {
+  text-align: center;
+}
+
+.publisher-info h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.publisher-description {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.publisher-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.publisher-stats .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  color: #999;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btn-subscribe,
+.btn-unsubscribe {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-subscribe {
+  background: #667eea;
+  color: white;
+}
+
+.btn-subscribe:hover {
+  background: #5568d3;
+}
+
+.btn-unsubscribe {
+  background: #28a745;
+  color: white;
+}
+
+.btn-unsubscribe:hover {
+  background: #218838;
+}

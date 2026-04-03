@@ -10,3 +10,9 @@
 {"level":"info","message":"User registered: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 05:02:11"}
 {"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 05:02:38"}
 {"level":"info","message":"User registered: dumb.user@test.com","service":"newsaccess-api","timestamp":"2026-04-03 05:07:29"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 05:22:48"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 05:40:38"}
+{"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 13:50:25"}
+{"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 13:50:25"}
+{"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 13:50:31"}
+{"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 13:50:31"}
