@@ -1,4 +1,4 @@
-import { User } from '../models/User';
+import { User } from '../models/UserModel';
 import { Subscription } from '../models/Subscription';
 import { logger } from '../utils/logger';
 

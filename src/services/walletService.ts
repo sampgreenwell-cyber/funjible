@@ -1,4 +1,4 @@
-import { User } from '../models/User';
+import { User } from '../models/UserModel';
 import { PaymentService } from './paymentService';
 import { logger } from '../utils/logger';
 

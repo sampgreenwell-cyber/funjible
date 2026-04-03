@@ -1,4 +1,4 @@
-import { User } from '../models/User';
+import { User } from '../models/UserModel';
 import Stripe from 'stripe';
 import { logger } from '../utils/logger';
 import { v4 as uuidv4 } from 'uuid';
