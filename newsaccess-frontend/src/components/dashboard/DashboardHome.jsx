@@ -13,21 +13,26 @@ function DashboardHome() {
     fetchDashboardData();
   }, []);
 
-  const fetchDashboardData = async () => {
+ const fetchDashboardData = async () => {
+  try {
+    // Fetch wallet (should work)
+    const walletRes = await walletAPI.getWallet();
+    setWallet(walletRes.data.data);
+
+    // Try to fetch articles, but don't fail if endpoint doesn't exist
     try {
-      const [walletRes, articlesRes] = await Promise.all([
-        walletAPI.getWallet(),
-        articleAPI.getPurchasedArticles(),
-      ]);
-      
-      setWallet(walletRes.data.data);
+      const articlesRes = await articleAPI.getPurchasedArticles();
       setRecentArticles(articlesRes.data.data.slice(0, 5));
-    } catch (error) {
-      console.error('Failed to fetch dashboard data:', error);
-    } finally {
-      setLoading(false);
+    } catch (articleError) {
+      console.log('Articles endpoint not available yet');
+      setRecentArticles([]);
     }
-  };
+  } catch (error) {
+    console.error('Failed to fetch dashboard data:', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   if (loading) {
     return <div className="loading">Loading dashboard...</div>;

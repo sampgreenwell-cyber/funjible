@@ -1,6 +1,7 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import { WalletService } from '../services/walletService';
+import { User } from '../models/UserModel';
 import { logger } from '../utils/logger';
 
 export class WalletController {
@@ -22,25 +23,67 @@ export class WalletController {
     }
   }
 
-  static async addFunds(req: AuthRequest, res: Response): Promise<void> {
-    try {
-      const { amount, paymentMethodId } = req.body;
-      const userId = req.userId!;
+static async addFunds(req: AuthRequest, res: Response): Promise<void> {
+  try {
+    const { amount } = req.body;
+    const userId = req.userId!;
 
-      const result = await WalletService.addFunds(userId, amount, paymentMethodId);
-
-      res.json({
-        success: true,
-        data: result
-      });
-    } catch (error: any) {
-      logger.error('Add funds error:', error);
+    // Validate amount
+    if (!amount || amount <= 0) {
       res.status(400).json({
         success: false,
-        error: error.message || 'Failed to add funds'
+        error: 'Invalid amount'
       });
+      return;
     }
+
+    if (amount < 5) {
+      res.status(400).json({
+        success: false,
+        error: 'Minimum amount is $5.00'
+      });
+      return;
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(404).json({
+        success: false,
+        error: 'User not found'
+      });
+      return;
+    }
+
+    // For demo: just add funds directly without payment processing
+    user.wallet.balance += amount;
+    user.wallet.transactions.push({
+      type: 'DEPOSIT',
+      amount,
+      timestamp: new Date(),
+      status: 'COMPLETED',
+      description: `Added $${amount} to wallet`
+    });
+
+    await user.save();
+
+    logger.info(`Funds added to wallet: $${amount} for user ${userId}`);
+
+    res.json({
+      success: true,
+      data: {
+        balance: user.wallet.balance,
+        amount,
+        timestamp: new Date()
+      }
+    });
+  } catch (error: any) {
+    logger.error('Add funds error:', error);
+    res.status(400).json({
+      success: false,
+      error: error.message || 'Failed to add funds'
+    });
   }
+}
 
   static async getTransactions(req: AuthRequest, res: Response): Promise<void> {
     try {

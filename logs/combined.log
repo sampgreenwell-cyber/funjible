@@ -16,3 +16,46 @@
 {"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 13:50:25"}
 {"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 13:50:31"}
 {"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 13:50:31"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 20:49:43"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:18:48"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:19:23"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:22:04"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:24:43"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:26:19"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:29:10"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:29:34"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:46:40"}
+{"level":"error","message":"Registration error: User with this email already exists","service":"newsaccess-api","stack":"Error: User with this email already exists\n    at AuthService.register (/app/dist/services/authService.js:25:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async register (/app/dist/controllers/authController.js:10:28)","timestamp":"2026-04-03 21:49:34"}
+{"level":"error","message":"Register error: User with this email already exists","service":"newsaccess-api","stack":"Error: User with this email already exists\n    at AuthService.register (/app/dist/services/authService.js:25:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async register (/app/dist/controllers/authController.js:10:28)","timestamp":"2026-04-03 21:49:34"}
+{"level":"info","message":"User registered: test@notest.com","service":"newsaccess-api","timestamp":"2026-04-03 21:49:47"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 21:58:23"}
+{"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 22:00:01"}
+{"level":"error","message":"Login error: Invalid email or password","service":"newsaccess-api","stack":"Error: Invalid email or password\n    at AuthService.login (/app/dist/services/authService.js:61:23)\n    at async login (/app/dist/controllers/authController.js:36:28)","timestamp":"2026-04-03 22:00:01"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 22:00:26"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-03 22:32:04"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-04 00:03:45"}
+{"level":"info","message":"MongoDB connected successfully","service":"newsaccess-api","timestamp":"2026-04-04 16:31:39"}
+{"level":"info","message":"Connected to MongoDB","service":"newsaccess-api","timestamp":"2026-04-04 16:31:39"}
+{"level":"info","message":"Redis connected","service":"newsaccess-api","timestamp":"2026-04-04 16:31:39"}
+{"level":"info","message":"Connected to Redis","service":"newsaccess-api","timestamp":"2026-04-04 16:31:39"}
+{"level":"info","message":"Server running on port 3000","service":"newsaccess-api","timestamp":"2026-04-04 16:31:39"}
+{"level":"info","message":"Environment: development","service":"newsaccess-api","timestamp":"2026-04-04 16:31:39"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-04 16:32:05"}
+{"level":"info","message":"MongoDB connected successfully","service":"newsaccess-api","timestamp":"2026-04-04 16:44:14"}
+{"level":"info","message":"Connected to MongoDB","service":"newsaccess-api","timestamp":"2026-04-04 16:44:14"}
+{"level":"info","message":"Redis connected","service":"newsaccess-api","timestamp":"2026-04-04 16:44:14"}
+{"level":"info","message":"Connected to Redis","service":"newsaccess-api","timestamp":"2026-04-04 16:44:14"}
+{"level":"info","message":"Server running on port 3000","service":"newsaccess-api","timestamp":"2026-04-04 16:44:14"}
+{"level":"info","message":"Environment: development","service":"newsaccess-api","timestamp":"2026-04-04 16:44:14"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-04 16:45:34"}
+{"cause":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"mongodb:27017":{"$clusterTime":null,"address":"mongodb:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":76520263,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"errorLabelSet":{},"level":"error","message":"connect ECONNREFUSED 172.19.0.3:27017","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"mongodb:27017":{"$clusterTime":null,"address":"mongodb:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":76520263,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"service":"newsaccess-api","stack":"MongooseServerSelectionError: connect ECONNREFUSED 172.19.0.3:27017\n    at _handleConnectionErrors (/app/node_modules/mongoose/lib/connection.js:1169:11)\n    at NativeConnection.openUri (/app/node_modules/mongoose/lib/connection.js:1100:11)\n    at async connectDatabase (/app/dist/config/database.js:12:9)\n    at async startServer (/app/dist/index.js:42:9)","timestamp":"2026-04-04 16:56:44"}
+{"level":"info","message":"MongoDB connected successfully","service":"newsaccess-api","timestamp":"2026-04-04 16:56:53"}
+{"level":"info","message":"Connected to MongoDB","service":"newsaccess-api","timestamp":"2026-04-04 16:56:53"}
+{"level":"info","message":"Redis connected","service":"newsaccess-api","timestamp":"2026-04-04 16:56:53"}
+{"level":"info","message":"Connected to Redis","service":"newsaccess-api","timestamp":"2026-04-04 16:56:53"}
+{"level":"info","message":"Server running on port 3000","service":"newsaccess-api","timestamp":"2026-04-04 16:56:53"}
+{"level":"info","message":"Environment: development","service":"newsaccess-api","timestamp":"2026-04-04 16:56:53"}
+{"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-04 16:57:03"}
+{"level":"info","message":"Funds added to wallet: $50 for user 69cf49d32c1821ec6beab343","service":"newsaccess-api","timestamp":"2026-04-04 16:57:13"}
+{"level":"info","message":"Funds added to wallet: $100 for user 69cf49d32c1821ec6beab343","service":"newsaccess-api","timestamp":"2026-04-04 16:57:39"}
+{"level":"info","message":"Funds added to wallet: $100 for user 69cf49d32c1821ec6beab343","service":"newsaccess-api","timestamp":"2026-04-04 17:04:36"}

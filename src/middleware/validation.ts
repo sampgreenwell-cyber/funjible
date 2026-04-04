@@ -41,8 +41,8 @@ export const purchaseArticleSchema = Joi.object({
 });
 
 export const addFundsSchema = Joi.object({
-  amount: Joi.number().min(1).max(500).required(),
-  paymentMethodId: Joi.string().required()
+  amount: Joi.number().min(5).max(500).required()
+  // Removed paymentMethodId - not needed for demo
 });
 
 export const addPaymentMethodSchema = Joi.object({
