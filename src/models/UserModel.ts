@@ -23,9 +23,20 @@ export interface IWalletTransaction {
 }
 
 export interface IWallet {
-  balance: number;
+   balance: number;
   currency: string;
-  transactions: IWalletTransaction[];
+  totalSpent?: number;
+  totalAdded?: number;      // ADD THIS
+  articlesPurchased?: number; // ADD THIS
+  transactions: Array<{
+    type: string;
+    amount: number;
+    articleId?: string;
+    publisherId?: string;
+    timestamp: Date;
+    status: string;
+    description: string;
+  }>;
 }
 
 export interface IPurchasedArticle {
@@ -75,6 +86,9 @@ const WalletTransactionSchema = new Schema<IWalletTransaction>({
 const WalletSchema = new Schema<IWallet>({
   balance: { type: Number, default: 0, min: 0 },
   currency: { type: String, default: 'USD' },
+  totalAdded: { type: Number, default: 0 },      // ADD THIS
+  totalSpent: { type: Number, default: 0 },      // ADD THIS
+  articlesPurchased: { type: Number, default: 0 }, // ADD THIS
   transactions: [WalletTransactionSchema]
 });
 

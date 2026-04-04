@@ -11,15 +11,17 @@ function TransactionHistory() {
   }, []);
 
   const fetchTransactions = async () => {
-    try {
-      const response = await walletAPI.getTransactions({ limit: 20 });
-      setTransactions(response.data.data);
-    } catch (error) {
-      console.error('Failed to fetch transactions:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const response = await walletAPI.getTransactions({ limit: 20 });
+    // Handle nested response structure
+    const txns = response.data.data?.transactions || response.data.data || [];
+    setTransactions(txns);
+  } catch (error) {
+    console.error('Failed to fetch transactions:', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString('en-US', {

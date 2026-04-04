@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { articleAPI, walletAPI } from '../../services/api';
 import './Articles.css';
 
@@ -7,7 +7,7 @@ function PurchaseModal({ article, onClose, onSuccess }) {
   const [error, setError] = useState('');
   const [wallet, setWallet] = useState(null);
 
-  useState(() => {
+  useEffect(() => {
     fetchWallet();
   }, []);
 

@@ -6,22 +6,36 @@ import { logger } from '../utils/logger';
 
 export class WalletController {
   static async getBalance(req: AuthRequest, res: Response): Promise<void> {
-    try {
-      const userId = req.userId!;
-      const balance = await WalletService.getBalance(userId);
-
-      res.json({
-        success: true,
-        data: balance
-      });
-    } catch (error: any) {
-      logger.error('Get balance error:', error);
-      res.status(500).json({
+  try {
+    const userId = req.userId!;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(404).json({
         success: false,
-        error: 'Failed to get wallet balance'
+        error: 'User not found'
       });
+      return;
     }
+
+    res.json({
+      success: true,
+      data: {
+        balance: user.wallet.balance || 0,
+        currency: user.wallet.currency || 'USD',
+        totalAdded: user.wallet.totalAdded || 0,
+        totalSpent: user.wallet.totalSpent || 0,
+        articlesPurchased: user.wallet.articlesPurchased || 0
+      }
+    });
+  } catch (error: any) {
+    logger.error('Get balance error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to get wallet balance'
+    });
   }
+}
 
 static async addFunds(req: AuthRequest, res: Response): Promise<void> {
   try {
@@ -56,6 +70,11 @@ static async addFunds(req: AuthRequest, res: Response): Promise<void> {
 
     // For demo: just add funds directly without payment processing
     user.wallet.balance += amount;
+    // Track total added
+if (!user.wallet.totalAdded) {
+  user.wallet.totalAdded = 0;
+}
+user.wallet.totalAdded += amount;
     user.wallet.transactions.push({
       type: 'DEPOSIT',
       amount,
