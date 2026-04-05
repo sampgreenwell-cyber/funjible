@@ -1,3 +1,4 @@
+import ArticleReader from './components/articles/ArticleReader';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import AuthPage from './pages/AuthPage';
@@ -63,6 +64,12 @@ function AppRoutes() {
           <WalletPage />
         </ProtectedRoute>
       } />
+
+      <Route path="/articles/:id" element={
+  <ProtectedRoute>
+    <ArticleReader />
+  </ProtectedRoute>
+} />
 
       <Route path="/articles" element={
         <ProtectedRoute>
