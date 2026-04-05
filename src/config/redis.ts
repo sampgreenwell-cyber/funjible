@@ -1,14 +1,18 @@
 import { createClient, RedisClientType } from 'redis';
 import { logger } from '../utils/logger';
 
-let redisClient: RedisClientType;
+let redisClient: RedisClientType | null = null;
 
-export const connectRedis = async (): Promise<RedisClientType> => {
+export const connectRedis = async (): Promise<RedisClientType | null> => {
+  // Skip Redis in production if REDIS_URL is not set
+  if (!process.env.REDIS_URL) {
+    logger.info('Redis URL not configured - running without Redis');
+    return null;
+  }
+
   try {
-    const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
-    
     redisClient = createClient({
-      url: redisUrl,
+      url: process.env.REDIS_URL,
       password: process.env.REDIS_PASSWORD,
     });
 
@@ -21,18 +25,16 @@ export const connectRedis = async (): Promise<RedisClientType> => {
     });
 
     await redisClient.connect();
+    logger.info('Connected to Redis');
     
     return redisClient;
   } catch (error) {
-    logger.error('Failed to connect to Redis:', error);
-    throw error;
+    logger.error('Failed to connect to Redis (continuing without it):', error);
+    return null;
   }
 };
 
-export const getRedisClient = (): RedisClientType => {
-  if (!redisClient) {
-    throw new Error('Redis client not initialized');
-  }
+export const getRedisClient = (): RedisClientType | null => {
   return redisClient;
 };
 
@@ -44,6 +46,5 @@ export const disconnectRedis = async (): Promise<void> => {
     }
   } catch (error) {
     logger.error('Error closing Redis connection:', error);
-    throw error;
   }
 };
