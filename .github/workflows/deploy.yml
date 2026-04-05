@@ -1,4 +1,4 @@
-name: Build and Deploy to Azure
+name: Build and Deploy
 
 on:
   push:
@@ -36,8 +36,6 @@ jobs:
           tags: |
             type=ref,event=branch
             type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
             type=sha,prefix={{branch}}-
 
       - name: Build and push Docker image
@@ -60,8 +58,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Container Apps
-        uses: azure/container-apps-deploy-action@v1
-        with:
-          containerAppName: funjibly-api
-          resourceGroup: funjibly-rg
-          imageToDeploy: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
+        run: |
+          az containerapp update \
+            --name funjibly-api \
+            --resource-group funjibly-rg \
+            --image ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
