@@ -36,4 +36,63 @@ h1 {
 
 button {
   font-family: inherit;
+
+  /* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Reduce base font size on mobile */
+  body {
+    font-size: 14px;
+  }
+
+  /* Make containers full width on mobile */
+  .container {
+    padding: 10px;
+    margin: 0;
+  }
+
+  /* Stack columns vertically */
+  .dashboard-grid,
+  .wallet-stats,
+  .article-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+  }
+
+  /* Make buttons full width */
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* Reduce heading sizes */
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Fix navigation for mobile */
+  nav {
+    flex-wrap: wrap;
+  }
+
+  /* Make forms full width */
+  .form-group input,
+  .form-group select {
+    width: 100%;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
 }
