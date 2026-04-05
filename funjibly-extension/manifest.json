@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Funjibly - Pay-Per-Article",
+  "version": "1.0.0",
+  "description": "Unlock paywalled articles with micro-payments",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://funjibly-api.proudwater-3e7b001e.eastus.azurecontainerapps.io/*",
+    "file:///*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
