@@ -223,3 +223,5 @@
 {"level":"info","message":"Server running on port 3000","service":"newsaccess-api","timestamp":"2026-04-04 22:25:41"}
 {"level":"info","message":"Environment: development","service":"newsaccess-api","timestamp":"2026-04-04 22:25:41"}
 {"level":"info","message":"User logged in: sam.p.greenwell@gmail.com","service":"newsaccess-api","timestamp":"2026-04-04 22:25:42"}
+{"level":"info","message":"Funds added to wallet: $50 for user 69cf49d32c1821ec6beab343","service":"newsaccess-api","timestamp":"2026-04-04 22:31:39"}
+{"level":"info","message":"Funds added to wallet: $10 for user 69cf49d32c1821ec6beab343","service":"newsaccess-api","timestamp":"2026-04-04 22:32:28"}
