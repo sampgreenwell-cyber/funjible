@@ -9,7 +9,7 @@ interface RegisterData {
   lastName: string;
 }
 
-nterface AuthResult {
+interface AuthResult {
   user: {
     id: string;
     email: string;
