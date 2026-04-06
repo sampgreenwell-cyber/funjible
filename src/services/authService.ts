@@ -57,15 +57,16 @@ export class AuthService {
       logger.info(`User registered: ${user.email}`);
 
       return {
-        user: {
-          id: user._id.toString(),
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName
-        },
-        token,
-        refreshToken
-      };
+  user: {
+    id: user._id.toString(),
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    createdAt: user.createdAt  // ADD THIS
+  },
+  token,
+  refreshToken
+};
     } catch (error: any) {
       logger.error('Registration error:', error);
       throw error;
@@ -90,15 +91,16 @@ export class AuthService {
       logger.info(`User logged in: ${user.email}`);
 
       return {
-        user: {
-          id: user._id.toString(),
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName
-        },
-        token,
-        refreshToken
-      };
+  user: {
+    id: user._id.toString(),
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    createdAt: user.createdAt  // ADD THIS
+  },
+  token,
+  refreshToken
+};
     } catch (error: any) {
       logger.error('Login error:', error);
       throw error;
