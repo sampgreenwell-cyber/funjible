@@ -63,7 +63,7 @@ function TransactionHistory() {
               </div>
               <div className="transaction-details">
                 <h4>{transaction.description}</h4>
-                <p className="transaction-date">{formatDate(transaction.createdAt)}</p>
+                <p className="transaction-date">{formatDate(transaction.timestamp)}</p>
               </div>
               <div className={`transaction-amount ${transaction.type}`}>
                 {transaction.type === 'credit' ? '+' : '-'}

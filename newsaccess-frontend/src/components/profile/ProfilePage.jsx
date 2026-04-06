@@ -144,10 +144,10 @@ function ProfilePage() {
             <div className="info-item">
               <span className="info-label">Member Since</span>
               <span className="info-value">
-                {new Date(user?.createdAt).toLocaleDateString('en-US', {
-                  month: 'long',
-                  year: 'numeric'
-                })}
+                {user?.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', {
+  month: 'long',
+  year: 'numeric'
+}) : 'N/A'}
               </span>
             </div>
             <div className="info-item">
