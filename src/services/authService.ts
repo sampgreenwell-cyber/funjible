@@ -9,12 +9,13 @@ interface RegisterData {
   lastName: string;
 }
 
-interface AuthResult {
+nterface AuthResult {
   user: {
     id: string;
     email: string;
     firstName: string;
     lastName: string;
+    createdAt: Date;  // ADD THIS LINE
   };
   token: string;
   refreshToken: string;
