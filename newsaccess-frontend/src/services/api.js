@@ -69,10 +69,10 @@ export const publisherAPI = {
 
 // User APIs
 export const userAPI = {
-  getProfile: () => api.get('/users/profile'),
-  updateProfile: (data) => api.put('/users/profile', data),
-  getReadingHistory: () => api.get('/users/reading-history'),
-  getSpendingAnalytics: () => api.get('/users/spending-analytics'),
+  getProfile: () => api.get('/user/profile'),
+  updateProfile: (data) => api.put('/user/profile', data),
+  getReadingHistory: () => api.get('/user/reading-history'),
+  getSpendingAnalytics: () => api.get('/user/spending-analytics'),
 };
 
 // Payment APIs
